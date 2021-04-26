@@ -1,9 +1,9 @@
-let turn = 0
-let playerTurn = "blue"
-let redCard 
-let bluecard
-let bluedeck
-let redDeck
-let cardPlay=[]
+let turn = 0;
+let playerTurn = "blue";
+let redCard;
+let blueCard;
+let deckOne; //blue
+let deckTwo; //red
+let cardPlay = [];
 
-game()
+game();

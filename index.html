@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triple Triad</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
-          <div class="logo"><img src="logo..."/></div>
-          <div id="turn" class="turn">Player turn : <font class="teamBlue">Blue</font></div>
-        </div>
-        <div class="main">
-        <div class="gameBoard">
-          <div class="row cards">
-                <img id="1" src="img/back.png" onclick="cardPlay(1)"/>
-                <img class="imgCenter" id="2" src="img/back.png" onclick="cardPlay(2)"/>
-                <img id="3" src="img/dosCarte.png" onclick="cardPlay(3)"/>
-          </div>
-          <div class="row cards">
-              <img id="4" src="img/back.png" onclick="cardPlay(4)"/>
-              <img class="imgCenter" id="5" src="img/dosCarte.png" onclick="cardPlay(5)"/>
-              <img id="6" src="img/back.png" onclick="cardPlay(6)"/>
-          </div>
-          <div class="row ligneCartes">
-              <img id="7" src="img/back.png" onclick="cardPlay(7)"/>
-              <img class="imgCenter" id="8" src="img/back.png" onclick="cardPlay(8)"/>
-              <img id="9" src="img/back.png" onclick="cardPlay(9)"/>
-          </div>
-        </div>
-        <div class="row decks">
-          <div id="blueDeck"></div>
-          <div id="cardSelect">Pick a card<img src="img/back.png"></div>
-          <div id="redDeck"></div>
+  <div class="container">
+    <div class="row">
+      <div class="logo"><img src="logo..." /></div>
+      <div id="turn" class="turn">Player turn : <font class="teamBlue">Blue</font>
+      </div>
+    </div>
+    <div class="main">
+      <div class="gameBoard">
+        <div class="grid">
+          <img id="1" class="board" src="img/back.jpeg" onclick="cardPlay(1)" />
+          <img class="board" id="2" src="img/back.jpeg" onclick="cardPlay(2)" />
+          <img id="3" class="board" src="img/back.jpeg" onclick="cardPlay(3)" />
+
+          <img id="4" class="board" src="img/back.jpeg" onclick="cardPlay(4)" />
+          <img class="board" id="5" src="img/back.jpeg" onclick="cardPlay(5)" />
+          <img id="6" class="board" src="img/back.jpeg" onclick="cardPlay(6)" />
+
+          <img id="7" class="board"src="img/back.jpeg" onclick="cardPlay(7)" />
+          <img class="board" id="8" src="img/back.jpeg" onclick="cardPlay(8)" />
+          <img id="9" class="board" src="img/back.jpeg" onclick="cardPlay(9)" />
         </div>
       </div>
-  
+      <div class="row decks">
+        <div id="deckOne"></div>
+        <div id="cardSelect" class="pickCard">Pick a card<img src="img/back.jpeg"></div>
+        <div id="deckTwo"></div>
       </div>
-      <script src="./gameJs/cards.js"></script>
-      <script src="./gameJs/index.js"></script>
-      <script src="./gameJs/init.js"></script>
-    
+    </div>
+<!-- credit: illustrations from Yoshitaka Amano, back card Karen McCarthy -->
+  </div>
+  <script src="./gameJs/cards.js"></script>
+  <script src="./gameJs/index.js"></script>
+  <script src="./gameJs/init.js"></script>
+
 </body>
+
 </html>

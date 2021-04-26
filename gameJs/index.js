@@ -1,36 +1,43 @@
 function game() {
-  deckOne = createDeck();
-  deckTwo = createDeck();
+  deckOne = createDeck(); //blue
+  deckTwo = createDeck(); //red
 
   let blue = "blue";
   let red = "red";
   let divDeck = "";
   //loop throught an array of cards to build a deck
   for (let i = 0; i < 5; i++) {
-    divDeck +=
-      '<img id="blue' +
-      deckOne[i].img +
-      '" onclick="select(' +
-      i +
-      "," +
-      0 +
-      ')" src="' +
-      deckOne[i].img +
-      '" />';
+    divDeck +='<img id="blue'+deckOne[i].img+'" onclick="select('+i+','+0 +')" src="' +deckOne[i].img+'" />';
+      // `<img id="blue" onclick="select(${i}, ${+0}) src="${deckOne[i].img}"/>`;
+    console.log(divDeck);
   }
   //display the deck
   document.getElementById("deckOne").innerHTML = divDeck;
   divDeck = "";
+  for (let i = 0; i < 5; i++) {
+    divDeck +='<img id ="red'+deckTwo[i].img+'"onclick="select('+i+","+0+')"src="'+deckTwo[i].img+'"/>';
+    console.log(divDeck);
+  }
+  document.getElementById("deckTwo").innerHTML = divDeck;
 }
 //function radomize the deck
 function createDeck() {
   let random = Math.floor(Math.random() * cards.length);
   // new constructor discovered after Number, String ... Array!!!
-  let deck = new Array(cards(random));
+  let deck = new Array(cards[random]);
+  random = Math.floor(Math.random() * cards.length);
+  deck.push(cards[random]);
+  random = Math.floor(Math.random() * cards.length);
+  deck.push(cards[random]);
+  random = Math.floor(Math.random() * cards.length);
+  deck.push(cards[random]);
+  random = Math.floor(Math.random() * cards.length);
+  deck.push(cards[random]);
+
   return deck;
 }
 
-//In game part i is a random card and team could be player or the infamous 'toto'
+//In-game part i is a random card and team could be player or the infamous 'toto'
 function select(i, team) {
   if (team === 1) {
     if (turn === "red") {
@@ -44,13 +51,13 @@ function select(i, team) {
     if (turn === "blue") {
       blueCard = deckOne[i];
       document.getElementById("cardSelect").innerHTML =
-        'card selected : <img src="' + bluecard.img + '"/>';
+        'card selected : <img src="' + blueCard.img + '"/>';
     } else {
       alert("That's not your deck !");
     }
   }
 }
-// the fun part : the card placement, there some boundaries
+// the fun part : the card placement
 function cardsPlacement(nb) {
   if (placement === "blue") {
     if (turn === "blue") {

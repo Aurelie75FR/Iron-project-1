@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    margin: auto;
+}
+
+body {
+    background: rgb(18, 35, 121);
+    background: radial-gradient(circle, rgba(18, 35, 121, 1) 0%, rgba(70, 252, 250, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.grid {
+    margin-top: 3rem;
+    width: 600px;
+    height: auto;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* align-content: center;
+    align-items: center;
+    text-align: center; */
+    margin-bottom: 3rem;
+}
+
+.board {
+    border: 1px dotted green;
+}
+
+.grid>img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.pickCard>img {
+    width: 150px;
+}
+
+#deckOne>img{
+    width: 150px;
+    height: 250px;
+    margin: 5px;
+}
+#deckTwo>img{
+    width: 150px;
+    height: 250px;
+    margin: 5px;
+}
