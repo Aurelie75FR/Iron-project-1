@@ -1,4 +1,4 @@
-let turn = 0;
+let nbTurn = 0;
 let playerTurn = "blue";
 let redCard;
 let blueCard;

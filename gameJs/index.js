@@ -5,22 +5,24 @@ function game() {
   let blue = "blue";
   let red = "red";
   let divDeck = "";
-  //loop throught an array of cards to build a deck
+  //loop throught an array of cards to build a deck and display decks
   for (let i = 0; i < 5; i++) {
-    divDeck +='<img id="blue'+deckOne[i].img+'" onclick="select('+i+','+0 +')" src="' +deckOne[i].img+'" />';
-      // `<img id="blue" onclick="select(${i}, ${+0}) src="${deckOne[i].img}"/>`;
-    console.log(divDeck);
+    divDeck +=
+    '<img id="blue'+deckOne[i].img+'"onclick="select(' +i+","+0+')" src="'+deckOne[i].img+'" />';
+    // `<img id="blue" onclick="select(${i}, ${+0}) src="${deckOne[i].img}"/>`;
+    // console.log(divDeck);
   }
-  //display the deck
   document.getElementById("deckOne").innerHTML = divDeck;
+
   divDeck = "";
   for (let i = 0; i < 5; i++) {
-    divDeck +='<img id ="red'+deckTwo[i].img+'"onclick="select('+i+","+0+')"src="'+deckTwo[i].img+'"/>';
-    console.log(divDeck);
+    divDeck +=
+      '<img id ="red'+deckTwo[i].img+'"onclick="select('+i+","+1+')"src="'+deckTwo[i].img+'"/>';
+    // console.log(divDeck);
   }
   document.getElementById("deckTwo").innerHTML = divDeck;
 }
-//function radomize the deck
+//function randomize the deck
 function createDeck() {
   let random = Math.floor(Math.random() * cards.length);
   // new constructor discovered after Number, String ... Array!!!
@@ -34,72 +36,86 @@ function createDeck() {
   random = Math.floor(Math.random() * cards.length);
   deck.push(cards[random]);
 
+  //console.log(deck);
   return deck;
 }
 
 //In-game part i is a random card and team could be player or the infamous 'toto'
 function select(i, team) {
-  if (team === 1) {
-    if (turn === "red") {
+  if (team == 1) {
+    if (playerTurn == "red") {
       redCard = deckTwo[i];
       document.getElementById("cardSelect").innerHTML =
-        'card selected : <img src="' + redCard.img + '" />';
+        'card selected :   <img src="' + redCard.img + '" />';
+       // console.log(redCard);
+       // console.log(playerTurn);
+      } else {
+        alert("That's not your deck !");
+      }
     } else {
-      alert("That's not your deck !");
-    }
-  } else {
-    if (turn === "blue") {
-      blueCard = deckOne[i];
-      document.getElementById("cardSelect").innerHTML =
+      if (playerTurn == "blue") {
+        blueCard = deckOne[i];
+        document.getElementById("cardSelect").innerHTML =
         'card selected : <img src="' + blueCard.img + '"/>';
-    } else {
-      alert("That's not your deck !");
+        // console.log(blueCard);
+        // console.log(playerTurn);
+      } else {
+        alert("That's not your deck !");
+      }
     }
-  }
+    // console.log(team);
 }
 // the fun part : the card placement
 function cardsPlacement(nb) {
-  if (placement === "blue") {
-    if (turn === "blue") {
-      if (typeof blueCard === "undefined") {
+  if (empty(nb)) {
+    if (playerTurn === "blue") {
+      if (typeof (blueCard) === "undefined") {
         alert("You didn't select any card !");
       } else {
         document.getElementById(nb).src = blueCard.img;
-        document.getElementById(nb).style.border = '10px solid "#49D4DB';
+        document.getElementById(nb).style.border = '10px solid #49D4DB';
         document.getElementById(nb).style.borderRadius = "12px";
-        blackNwhitecard(blueCard);
+        blackNwhiteCard(blueCard);
         cardPlay[nb] = blueCard;
         endOfTurn(nb);
         document.getElementById("nextTurn").innerHTML =
-          'Red turn : <font class="teamRed">Red</font>';
+          'Player turn : <font class="teamRed">Red</font>';
         blueCard = undefined;
         playerTurn = "red";
       }
     } else {
-      if (typeof (redCard === "undefined")) {
+      if (typeof (redCard) === "undefined") {
         alert("you didn't select any card !");
       } else {
         document.getElementById(nb).src = redCard.img;
-        document.getElementById(nb).style.border = '10px solid "#EC201A';
+        document.getElementById(nb).style.border = '10px solid #EC201A';
         document.getElementById(nb).style.borderRadius = "12px";
-        blackNwhitecard(redCard);
+        blackNwhiteCard(redCard);
         cardPlay[nb] = redCard;
         endOfTurn(nb);
         document.getElementById("nextTurn").innerHTML =
-          'Blue turn : <font class="teamBlue">Blue</font>';
+        'Player turn : <font class="teamBlue">Blue</font>';
         redCard = undefined;
         playerTurn = "blue";
       }
     }
   } else {
     alert("A card is already place here!");
+    console.log(cardPlay);
   }
+  console.log(cardPlay);
+  console.log(endOfTurn());
+  console.log(blackNwhiteCard());
+  console.log(blueCard);
+  console.log(empty());
+  console.log(playerTurn);
 }
 
 function endOfTurn(nb) {
   turnVerification(nb);
   document.getElementById("cardSelect").innerHTML =
-    'Pick a card <img src="img/back.png">';
+    'Pick a card : <img src="img/back.png">';
+    // `Pick a card : <img src="img/back.png>`
   nbTurn++;
   whoWon();
 }
@@ -124,7 +140,7 @@ function occupy(nb) {
 
 function turnVerification(nb) {
   let color = "red";
-  if (turn === "blue") {
+  if (playerTurn === "blue") {
     color = "#49D4DB";
   }
   //let's compare cards value on the grid
@@ -277,17 +293,17 @@ function turnVerification(nb) {
   }
 }
 //lost card so they turn black and white
-function blackNwhitecard(card) {
+function blackNwhiteCard(card) {
   color = "red";
-  if (turn === "blue") {
+  if (playerTurn === "blue") {
     color = "blue";
   }
-  document.getElementById(color + card.img).style.filter = "grayscale(100%)";
-  document.getElementById(color + card.img).onclick = function () {};
+  document.getElementById(color + cards.img).style.filter = "grayscale(100%)";
+  document.getElementById(color + cards.img).onclick = function () {};
 }
 
 function whoWon() {
-  if (turn === 9) {
+  if (nbTurn === 9) {
     let scoreB = 0;
     let scoreR = 0;
     for (let i = 0; i < 10; i++) {
@@ -299,7 +315,7 @@ function whoWon() {
       }
     }
     if (scoreB > scoreR) {
-      alert("Congrats!!Blue win! Play Again ?");
+      alert("Congrats!! Blue win! Play Again ?");
     } else {
       alert("Congrats!! Red win! Play Again ?");
     }
