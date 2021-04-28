@@ -2,9 +2,9 @@ function game() {
   deckOne = createDeck(); //blue
   deckTwo = createDeck(); //red
 
-  let blue = "blue";
-  let red = "red";
-  let divDeck = "";
+  let blue = 'blue';
+  let red = 'red';
+  let divDeck = '';
   //loop throught an array of cards to build a deck and display decks
   for (let i = 0; i < 5; i++) {
     divDeck +=
@@ -12,15 +12,15 @@ function game() {
     // `<img id="blue" onclick="select(${i}, ${+0}) src="${deckOne[i].img}"/>`;
     // console.log(divDeck);
   }
-  document.getElementById("deckOne").innerHTML = divDeck;
+  document.getElementById('deckOne').innerHTML = divDeck;
 
-  divDeck = "";
+  divDeck = '';
   for (let i = 0; i < 5; i++) {
     divDeck +=
       '<img id ="red'+deckTwo[i].img+'"onclick="select('+i+","+1+')"src="'+deckTwo[i].img+'"/>';
     // console.log(divDeck);
   }
-  document.getElementById("deckTwo").innerHTML = divDeck;
+  document.getElementById('deckTwo').innerHTML = divDeck;
 }
 //function randomize the deck
 function createDeck() {
@@ -40,23 +40,24 @@ function createDeck() {
   return deck;
 }
 
-//In-game part i is a random card and team could be player or the infamous 'toto'
+
 function select(i, team) {
   if (team == 1) {
-    if (playerTurn == "red") {
+    if (playerTurn == 'red') {
       redCard = deckTwo[i];
-      document.getElementById("cardSelect").innerHTML =
-        'card selected :   <img src="' + redCard.img + '" />';
+      document.getElementById('cardSelect').innerHTML =
+        '<img src="' + redCard.img + '""  />';
        // console.log(redCard);
        // console.log(playerTurn);
       } else {
         alert("That's not your deck !");
       }
     } else {
-      if (playerTurn == "blue") {
+      if (playerTurn == 'blue') {
         blueCard = deckOne[i];
-        document.getElementById("cardSelect").innerHTML =
-        'card selected : <img src="' + blueCard.img + '"/>';
+        document.getElementById('cardSelect').innerHTML =
+        '<img src="' + blueCard.img + '"  " />';
+        
         // console.log(blueCard);
         // console.log(playerTurn);
       } else {
@@ -68,35 +69,37 @@ function select(i, team) {
 // the fun part : the card placement
 function cardsPlacement(nb) {
   if (emptyCell(nb)) {
-    if (playerTurn == "blue") {
+    if (playerTurn == 'blue') {
       if (typeof (blueCard) == "undefined") {
         alert("You didn't select any card !");
       } else {
         document.getElementById(nb).src = blueCard.img;
         document.getElementById(nb).style.border = '5px solid blue';
-        document.getElementById(nb).style.borderRadius = "10px";
+        document.getElementById(nb).style.borderRadius = '10px';
+        document.getElementById(nb).style.height = '221px'
         blackNwhiteCard(blueCard);
         cardPlay[nb] = blueCard;
         endOfTurn(nb);
-        document.getElementById("nextTurn").innerHTML =
+        document.getElementById('nextTurn').innerHTML =
           'Player turn : <font class="teamRed">Red</font>';
         blueCard = undefined;
-        playerTurn = "red";
+        playerTurn = 'red';
       }
     } else {
       if (typeof (redCard) == "undefined") {
-        alert("you didn't select any card !");
+        alert("You didn't select any card !");
       } else {
         document.getElementById(nb).src = redCard.img;
         document.getElementById(nb).style.border = '5px solid #EC201A';
-        document.getElementById(nb).style.borderRadius = "10px";
+        document.getElementById(nb).style.borderRadius = '10px';
+        document.getElementById(nb).style.height = '221px'
        blackNwhiteCard(redCard);
         cardPlay[nb] = redCard;
         endOfTurn(nb);
-        document.getElementById("nextTurn").innerHTML =
+        document.getElementById('nextTurn').innerHTML =
         'Player turn : <font class="teamBlue">Blue</font>';
         redCard = undefined;
-        playerTurn = "blue";
+        playerTurn = 'blue';
       }
     }
   } else {
@@ -109,14 +112,14 @@ function cardsPlacement(nb) {
 function endOfTurn(nb) {
   turnVerification(nb);
   document.getElementById("cardSelect").innerHTML =
-    'Pick a card : <img src="img/back.png">';
+    '<img src="img/back.png">';
   nbTurn++;
   whoWon();
 }
 //Behold people! Here we are with Regex
 function emptyCell(nb) {
   let regex = /\w*.png/; //<-- from MDN it's replace() String x name of the card the player pick
-  if (document.getElementById(nb).src.match(regex) == "back.png") {
+  if (document.getElementById(nb).src.match(regex) == 'gameBoard.png') {
     return true;
   } else {
     return false;
@@ -125,7 +128,7 @@ function emptyCell(nb) {
 
 function occupyCell(nb) {
   let regex = /\w*.png/;
-  if (document.getElementById(nb).src.match(regex) != 'back.png') {
+  if (document.getElementById(nb).src.match(regex) != 'gameBoard.png') {
     return true;
   } else {
     return false;
@@ -144,7 +147,7 @@ function turnVerification(nb) {
       if (occupyCell(2)) {
         if (cardPlay[1].rightValue>cardPlay[2].leftValue) {
           document.getElementById(2).style.border=border
-        }
+        } 
       }
       if (occupyCell(4)) {
         if (cardPlay[1].downValue>cardPlay[4].upValue) {
@@ -290,9 +293,9 @@ function turnVerification(nb) {
 }
 //Cards already played so they turn black and white
 function blackNwhiteCard(cards) {
-  color = "red";
-  if (playerTurn == "blue") {
-    color = "blue";
+  color = 'red';
+  if (playerTurn == 'blue') {
+    color = 'blue';
   }
   document.getElementById(color + cards.img).style.filter = 'grayscale(100%)';
   document.getElementById(color + cards.img).onclick = function(){};

@@ -1,55 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
+
 * {
     box-sizing: border-box;
     margin: auto;
 }
 
 body {
-    background: rgb(18, 35, 121);
-    background: radial-gradient(circle, rgba(18, 35, 121, 1) 0%, rgba(70, 252, 250, 1) 100%);
-    background-repeat: no-repeat;
+    background: no-repeat url(./img/background3.jpg);
     background-size: cover;
+    font-family: "lato";
 
 }
-.main{
+/*----- Game Part -----*/
+.main {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .grid {
-    margin-top: 3rem;
-    width: 600px;
+    margin-top: 10px;
+    margin-bottom: 8rem;
+    width: auto;
     height: auto;
-    border: 1px solid black;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* align-content: center;
-    align-items: center;
-    text-align: center; */
-    margin-bottom: 3rem;
-}
-
-.board {
-    border: 1px dotted green;
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom left, red, rgb(209, 95, 114), purple, rgb(58, 16, 155), blue) 10;
 }
 
 .grid>img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
+    width: 150px;
+    height: 220px;
+}
+
+.column {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin-top: 15rem;
+}
+
+
+.board {
+    border: 2px solid black;
+}
+
+.pickCard {
+    text-align: center;
+
 }
 
 .pickCard>img {
-    width: 150px;
+    width: 100px;
 }
 
-#deckOne>img{
-    width: 150px;
-    height: 250px;
-    margin: 5px;
+.nextTurn {
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: white;
 }
-#deckTwo>img{
-    width: 150px;
-    height: 250px;
-    margin: 5px;
+
+
+
+
+
+
+#deckOne>img {
+    width: 120px;
+    height: 200px;
+    border-radius: 5px;
+    border: 3px solid blue;
 }
+
+#deckTwo>img {
+    width: 120px;
+    height: 200px;
+    border-radius: 5px;
+    border: 3px solid rgb(240, 27, 27);
+}
+
+#cardSelect>img {
+    height: 150px;
+    border-radius: 10px;
+}
+
+.teamBlue {
+    color: blue;
+}
+
+.teamRed {
+    color: red;
+}
+
+/* #start, h1{
+    color:blanchedalmond;
+    text-align: center;
+    visibility: hidden;
+} */

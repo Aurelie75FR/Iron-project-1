@@ -1,5 +1,5 @@
 let nbTurn = 0;
-let playerTurn = "blue";
+let playerTurn = 'blue';
 let redCard;
 let blueCard;
 let deckOne; //blue

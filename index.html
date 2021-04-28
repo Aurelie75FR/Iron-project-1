@@ -10,37 +10,50 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <!-- <div class="logo"><img src="logo..." /></div>  -->
-      <!---si j'ai le temps je ferai un logo sinon un h1-->
-      <div id="nextTurn" class="nextTurn">Player turn : <font class="teamBlue">Blue</font>
+  <!-- <div id="start">
+    <h1>Triple triad</h1>
+    <p>Let's start</p>
+     <p>credit: illustrations from Yoshitaka Amano, back card Karen McCarthy</p> 
+    <div id="howToPlay">
+      <p>Triple Triad is played on a three-by-three (3x3) square grid of blank spaces where the cards will be placed.
+        Each card has four numbers (known as ranks) placed in top left corner; each number corresponds to one of the
+        four sides of the card. The ranks range from one to nine, the letter A representing ten.
+
+        In a basic game each player has five cards. A coin-flip decides who begins. The player who wins the coin toss
+        may choose a card to play anywhere on the grid. After the first card is played, the opponent may play a card on
+        any unoccupied space on the board. The game continues with players' turns alternating.</p>
       </div>
-    </div>
-    <div class="main">
-      <div class="gameBoard">
-        <div class="grid">
-          <img id="1" class="board" src="img/back.png" onclick="cardsPlacement(1)" />
-          <img id="2" class="board" src="img/back.png" onclick="cardsPlacement(2)" />
-          <img id="3" class="board" src="img/back.png" onclick="cardsPlacement(3)" />
-
-          <img id="4" class="board" src="img/back.png" onclick="cardsPlacement(4)" />
-          <img id="5" class="board" src="img/back.png" onclick="cardsPlacement(5)" />
-          <img id="6" class="board" src="img/back.png" onclick="cardsPlacement(6)" />
-
-          <img id="7" class="board" src="img/back.png" onclick="cardsPlacement(7)" />
-          <img id="8" class="board" src="img/back.png" onclick="cardsPlacement(8)" />
-          <img id="9" class="board" src="img/back.png" onclick="cardsPlacement(9)" />
+    </div> -->
+    <div class="container">
+      <div class="row">
+        <div id="nextTurn" class="nextTurn">Player turn : <font class="teamBlue">Blue</font>
         </div>
       </div>
-      <div class="row decks">
-        <div id="deckOne"></div>
-        <div id="cardSelect" class="pickCard">Pick a card : <img src="img/back.png"></div>
-        <div id="deckTwo"></div>
+      <div id="cardSelect" class="pickCard"><img src="img/back.png"></div>
+      <div class="main">
+        <div class="column">
+          <div id="deckOne"></div>
+        </div>
+        <div class="gameBoard">
+          <div class="grid">
+            <img id="1" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(1)" />
+            <img id="2" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(2)" />
+            <img id="3" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(3)" />
+
+            <img id="4" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(4)" />
+            <img id="5" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(5)" />
+            <img id="6" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(6)" />
+
+            <img id="7" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(7)" />
+            <img id="8" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(8)" />
+            <img id="9" class="board" src="/img/gameBoard.png" onclick="cardsPlacement(9)" />
+          </div>
+        </div>
+        <div class="column">
+          <div id="deckTwo"></div>
+        </div>
       </div>
     </div>
-    <!-- credit: illustrations from Yoshitaka Amano, back card Karen McCarthy -->
-  </div>
   <script src="./gameJs/cards.js"></script>
   <script src="./gameJs/index.js"></script>
   <script src="./gameJs/init.js"></script>
