@@ -1,3 +1,12 @@
+// const gameView = document.querySelector('.container')
+// const start = document.querySelector('.start')
+// gameView.style.visibility = 'hidden'
+// start.style.display = ''
+// start.addEventListener('click', evt =>{
+//   gameView.style.visibility='visible';
+//   start.style.display='none';
+// })
+
 function game() {
   deckOne = createDeck(); //blue
   deckTwo = createDeck(); //red

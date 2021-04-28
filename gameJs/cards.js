@@ -8,7 +8,7 @@ class Cards {
   }
 }
 
-const asura = new Cards('img/characters/asura.png', 4, 6, 3, 4);
+const asura = new Cards('img/characters/asura.png', 4, 6, 3, 7);
 const bibi = new Cards('img/characters/bibi.png', 5, 10, 6, 8);
 const cecil = new Cards('img/characters/cecil.png', 3, 9, 6, 4);
 const celes = new Cards('img/characters/celes.png', 10, 9, 7, 5);
