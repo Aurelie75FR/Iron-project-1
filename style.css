@@ -7,14 +7,14 @@
 body {
     background: no-repeat url(./img/background3.jpg);
     background-size: cover;
-    font-family: "Lato";
-    /* height: 100vh; */
+    font-family: "Lato";   
 }
 
 
 /*---- Start + How To Play ----- */
 .start{
     width: 40%;
+    height: 40%;
     color: white;
     text-align: center;
 }
@@ -46,8 +46,8 @@ h3{
     justify-content: center;
 }
 .grid {
-    margin-top: 10px;
-    margin-bottom: 8rem;
+    margin-top: auto;
+    margin-bottom: 3rem;
     width: auto;
     height: auto;
     display: grid;
