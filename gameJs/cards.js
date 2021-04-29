@@ -1,3 +1,5 @@
+/* cards/value/place in the folder */
+
 class Cards {
   constructor(img, upValue, downValue, leftValue, rightValue) {
     this.img = img;

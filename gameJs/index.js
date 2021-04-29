@@ -1,11 +1,15 @@
-// const gameView = document.querySelector('.container')
-// const start = document.querySelector('.start')
-// gameView.style.visibility = 'hidden'
-// start.style.display = ''
-// start.addEventListener('click', evt =>{
-//   gameView.style.visibility='visible';
-//   start.style.display='none';
-// })
+/* ---- Start and How To Play ---- */ 
+
+const gameView = document.querySelector('.container')
+const start = document.querySelector('.start')
+gameView.style.visibility = 'hidden'
+start.style.display = 'block'
+start.addEventListener('click', evt =>{
+  gameView.style.visibility='visible';
+  start.style.display='none';
+})
+
+/* ---- Game Start ---- */
 
 function game() {
   deckOne = createDeck(); //blue
@@ -18,23 +22,22 @@ function game() {
   for (let i = 0; i < 5; i++) {
     divDeck +=
     '<img id="blue'+deckOne[i].img+'"onclick="select(' +i+","+0+')" src="'+deckOne[i].img+'" />';
-    // `<img id="blue" onclick="select(${i}, ${+0}) src="${deckOne[i].img}"/>`;
-    // console.log(divDeck);
   }
   document.getElementById('deckOne').innerHTML = divDeck;
+  //deckOne is display
 
   divDeck = '';
   for (let i = 0; i < 5; i++) {
     divDeck +=
       '<img id ="red'+deckTwo[i].img+'"onclick="select('+i+","+1+')"src="'+deckTwo[i].img+'"/>';
-    // console.log(divDeck);
   }
+  //deckTwo is diplay 
   document.getElementById('deckTwo').innerHTML = divDeck;
 }
-//function randomize the deck
+
+/* ---- Randomize the deck ---- */
 function createDeck() {
   let random = Math.floor(Math.random() * cards.length);
-  // new constructor discovered after Number, String ... Array!!!
   let deck = new Array(cards[random]);
   random = Math.floor(Math.random() * cards.length);
   deck.push(cards[random]);
@@ -44,20 +47,16 @@ function createDeck() {
   deck.push(cards[random]);
   random = Math.floor(Math.random() * cards.length);
   deck.push(cards[random]);
-
-  //console.log(deck);
   return deck;
 }
 
-
+/* ----- Card select in the players deck ---- */
 function select(i, team) {
   if (team == 1) {
     if (playerTurn == 'red') {
       redCard = deckTwo[i];
       document.getElementById('cardSelect').innerHTML =
         '<img src="' + redCard.img + '""  />';
-       // console.log(redCard);
-       // console.log(playerTurn);
       } else {
         alert("That's not your deck !");
       }
@@ -66,16 +65,14 @@ function select(i, team) {
         blueCard = deckOne[i];
         document.getElementById('cardSelect').innerHTML =
         '<img src="' + blueCard.img + '"  " />';
-        
-        // console.log(blueCard);
-        // console.log(playerTurn);
       } else {
         alert("That's not your deck !");
       }
     }
-    // console.log(team);
 }
-// the fun part : the card placement
+
+
+/* ---- Card Placement on the board ---- */
 function cardsPlacement(nb) {
   if (emptyCell(nb)) {
     if (playerTurn == 'blue') {
@@ -88,7 +85,7 @@ function cardsPlacement(nb) {
         document.getElementById(nb).style.height = '221px'
         blackNwhiteCard(blueCard);
         cardPlay[nb] = blueCard;
-        endOfTurn(nb);
+        endTurn(nb);
         document.getElementById('nextTurn').innerHTML =
           'Player turn : <font class="teamRed">Red</font>';
         blueCard = undefined;
@@ -104,7 +101,7 @@ function cardsPlacement(nb) {
         document.getElementById(nb).style.height = '221px'
        blackNwhiteCard(redCard);
         cardPlay[nb] = redCard;
-        endOfTurn(nb);
+        endTurn(nb);
         document.getElementById('nextTurn').innerHTML =
         'Player turn : <font class="teamBlue">Blue</font>';
         redCard = undefined;
@@ -114,18 +111,16 @@ function cardsPlacement(nb) {
   } else {
     alert("A card is already place here!");
   }
- 
-  console.log(playerTurn);
 }
-
-function endOfTurn(nb) {
+/*When the card is place on the board, It end the turn and the next player can play */
+function endTurn(nb) {
   turnVerification(nb);
   document.getElementById("cardSelect").innerHTML =
     '<img src="img/back.png">';
   nbTurn++;
   whoWon();
 }
-//Behold people! Here we are with Regex
+/*---- To determine if the cell on the board is empty ----*/
 function emptyCell(nb) {
   let regex = /\w*.png/; //<-- from MDN it's replace() String x name of the card the player pick
   if (document.getElementById(nb).src.match(regex) == 'gameBoard.png') {
@@ -134,7 +129,7 @@ function emptyCell(nb) {
     return false;
   }
 }
-
+/* ---- To determine if the cell is occupy---- */
 function occupyCell(nb) {
   let regex = /\w*.png/;
   if (document.getElementById(nb).src.match(regex) != 'gameBoard.png') {
@@ -144,6 +139,7 @@ function occupyCell(nb) {
   }
 }
 
+/* ---- Compare the value between two cards and also if it's blue or red ---- */
 function turnVerification(nb) {
   let color = 'red';
   if (playerTurn == 'blue') {
@@ -286,7 +282,7 @@ function turnVerification(nb) {
       }
       break;
 
-    case 9:
+    case 9:  // <-- corner down right
       if (occupyCell(6)) {
         if (cardPlay[9].upValue>cardPlay[6].downValue) {
           document.getElementById(6).style.border=border
@@ -300,7 +296,8 @@ function turnVerification(nb) {
       break;
   }
 }
-//Cards already played so they turn black and white
+
+/* ---- When the card is use, the card turn black and white ---- */
 function blackNwhiteCard(cards) {
   color = 'red';
   if (playerTurn == 'blue') {
@@ -309,6 +306,8 @@ function blackNwhiteCard(cards) {
   document.getElementById(color + cards.img).style.filter = 'grayscale(100%)';
   document.getElementById(color + cards.img).onclick = function(){};
 }
+
+/* ---- Count the number of blue/red card and who won ---- */
 
 function whoWon() {
   if (nbTurn==9) {
