@@ -8,6 +8,7 @@ body {
     background: no-repeat url(./img/background3.jpg);
     background-size: cover;
     font-family: "Lato";
+    /* height: 100vh; */
 }
 
 
@@ -16,6 +17,9 @@ body {
     width: 40%;
     color: white;
     text-align: center;
+}
+p{
+    font-size: 20px;
 }
 .btn{
     font-size: 2rem;
@@ -32,6 +36,7 @@ h1{
 h3{
     margin-top:3rem ;
     font-size: x-large;
+    text-decoration: underline;
 }
 
 
